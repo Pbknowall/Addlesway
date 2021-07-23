@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pbknowall/igpayatinlay.git"
+    "url": "git+https://github.com/Pbknowall/Addlesway.git"
   },
   "keywords": [
     "pig"
@@ -16,9 +16,9 @@
   "author": "Pbknowall",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Pbknowall/igpayatinlay/issues"
+    "url": "https://github.com/Pbknowall/Addlesway/issues"
   },
-  "homepage": "https://github.com/Pbknowall/igpayatinlay#readme",
+  "homepage": "https://github.com/Pbknowall/Addlesway#readme",
   "dependencies": {
     "discord-buttons": "^4.0.0",
     "discord.js": "^12.5.3",
