@@ -3,15 +3,16 @@ const vowels = ['a', 'e', 'i', 'o', 'u']
 const digraphs = ['sh', 'ch', 'th', 'wh', 'ph']
 
 module.exports = {
-    name: 'translate',
+    name: 'Translate',
     description: 'Shows info',
     aliases: ['t', 'igpay', 'igpayatinlay', 'atinlay'],
     cooldown: 1,
-    run: (Client, message, args, config) => {
+    run: (Client, message, args, Guild, Locale) => {
 
-        function translate(array) {
-            let result = [];
+        function englishTranslate(array) {
+            let output = [];
             for (let word of array) {
+                console.log(word)
                 if (digraphs.some(digraph => word.startsWith(digraph))) {
                     let digraph = word.substring(0, 2)
                     let upperCase;
@@ -19,11 +20,11 @@ module.exports = {
                     word = word.substring(2)
                     if (upperCase === true) word = word.charAt(0).toUpperCase() + word.substring(1)
                     word = word + digraph.toLowerCase() + 'ay'
-                    result.push(word)
+                    output.push(word)
                 }
                 else if (vowels.some(vowel => word.startsWith(vowel))) {
                     word = word + 'way'
-                    result.push(word)
+                    output.push(word)
                 }
                 else {
                     let firstLetter = word.charAt(0)
@@ -32,14 +33,38 @@ module.exports = {
                     word = word.substring(1)
                     if (upperCase === true) word = word.charAt(0).toUpperCase() + word.substring(1)
                     word = word + firstLetter.toLowerCase() + 'ay'
-                    result.push(word)
+                    output.push(word)
                 }
+                continue
             }
-            return result
+            return output
         }
 
-        let result = translate(args)
-        let output = result.join(' ')
-        message.channel.send(output)
+        function pigLatinTranslate(array) {
+            let output = []
+            for (let word of array) {
+                let ending = word.substring(word.length - 4)
+                let start;
+                if (digraphs.some(d => ending.includes(d))) {
+                    start = ending.substring(0, 2)
+                } else {
+                    start = ending.charAt(1)
+                }
+                word.replace(`${ending}ay`, '')
+                let rawEnding = `${start}ay`
+                output.push(start + word.substring(0, word.length - rawEnding.length))
+            }
+            return output;
+        }
+        if (!args.length) return message.channel.send(Locale.arguments.MissingArgs)
+        let sourceIsPiglatin = false;
+        if (args.filter(arg => arg.endsWith('ay')).length >= (args.length / 2)) sourceIsPiglatin = true;
+        if (!sourceIsPiglatin) {
+            let translated = englishTranslate(args)
+            message.channel.send(translated.join(' '))
+        } else {
+            let translated = pigLatinTranslate(args)
+            message.channel.send(translated.join(' '))
+        }
     }
 }

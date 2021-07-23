@@ -1,6 +1,6 @@
 const { Client } = require('discord.js')
 const Mongoose = require('mongoose')
-//const { Config } = require('./Mongoose/Config.js')
+const Config = require('./Managers/Guild.js')
 
 const Events = require('./Managers/EventHandler')
 const Commands = require('./Managers/CommandHandler')
@@ -11,7 +11,7 @@ require('dotenv').config()
 
 class Addlesway extends Client {
     constructor(options) {
-        super({})
+        super()
         this.start()
         this.connect()
     }
@@ -34,7 +34,7 @@ class Addlesway extends Client {
         db.on('error', console.error.bind(console, 'connection error:'));
         db.on('connected', () => {
             console.log(`Onnectedcay ithway OngomayDB otay Atabaseday '${db.db.namespace}' asway '${db.db.options.authSource}'`)
-            //this.Guild = new Guild(Mongoose);
+            this.Guild = new Config(Mongoose);
         })
     }
 }

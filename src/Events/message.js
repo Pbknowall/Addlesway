@@ -4,7 +4,9 @@ class Message {
     }
     async run(message) {
         if (message.author.bot || message.channel.type === 'dm') return;
-        let prefix = message.content.match(new RegExp(`^<@!?${this.Client.user.id}> `)) ? message.content.match(new RegExp(`^<@!?${this.Client.user.id}> `))[0] : 'a!'
+        let Guild = await this.Client.Guild.Get(message.guild.id)
+        let Locale = require('./../Locales/' + (Guild.Settings.Locale || 'en-US') + '.js')
+        let prefix = message.content.match(new RegExp(`^<@!?${this.Client.user.id}> `)) ? message.content.match(new RegExp(`^<@!?${this.Client.user.id}> `))[0] : Guild.Settings.Prefix;
         if (!message.content.startsWith(prefix) || !prefix) return;
         let args = message.content.slice(prefix.length).trim().split(/ +/);
         let cmd = args.shift().toLowerCase();
@@ -12,22 +14,12 @@ class Message {
         let command = this.Client.Commands.get(cmd) || this.Client.Aliases.get(cmd)
         cmd = command
         if (!cmd) return;
-
+        if (Guild.DisabledCommands.filter(c => c.name === cmd.name).length && message.author.id !== '283312969931292672') return;
+        if (Guild.DisabledCategories.filter(c => c.name === cmd.category).length && message.author.id !== '283312969931292672') return;
+        //cooldown isn't implemented, ik
         try {
-            if (cmd.cooldown) {
-                let cmdCooldown = this.Client.Cooldown.get(cmd.name)
-                if (cmdCooldown.ids.includes(message.author.id)) {
-                    return message.channel.send('Ou\'reyay endingsay essagesmay ootay astfay!')
-                } else {
-                    cmdCooldown.ids.push(message.author.id)
-                }
-
-                setTimeout(() => {
-                    let index = cmdCooldown.ids.indexOf(message.author.id)
-                    cmdCooldown.ids.splice(index, 1)
-                }, cmdCooldown.cooldown)
-            }
-            cmd.run(message.client, message, args)
+            if(Locale.Commands[cmd.name]) Locale = Locale.Commands[cmd.name]
+            cmd.run(message.client, message, args, Guild, Locale)
         } catch (err) {
             console.log(err)
         }
