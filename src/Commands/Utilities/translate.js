@@ -12,8 +12,7 @@ module.exports = {
         function englishTranslate(array) {
             let output = [];
             for (let word of array) {
-                console.log(word)
-                if (digraphs.some(digraph => word.startsWith(digraph))) {
+                if (digraphs.some(digraph => word.toLowerCase().startsWith(digraph))) {
                     let digraph = word.substring(0, 2)
                     let upperCase;
                     if (word.charAt(0).toUpperCase() === word.charAt(0)) upperCase = true;
@@ -22,7 +21,7 @@ module.exports = {
                     word = word + digraph.toLowerCase() + 'ay'
                     output.push(word)
                 }
-                else if (vowels.some(vowel => word.startsWith(vowel))) {
+                else if (vowels.some(vowel => word.toLowerCase().startsWith(vowel))) {
                     word = word + 'way'
                     output.push(word)
                 }
@@ -45,7 +44,7 @@ module.exports = {
             for (let word of array) {
                 let ending = word.substring(word.length - 4)
                 let start;
-                if (digraphs.some(d => ending.includes(d))) {
+                if (digraphs.some(d => ending.toLowerCase().includes(d))) {
                     start = ending.substring(0, 2)
                 } else {
                     start = ending.charAt(1)

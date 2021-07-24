@@ -8,7 +8,7 @@ module.exports = {
 
         Settings: {
             Prefix: 'a!',
-            EmbedColour: '#ffbe42',
+            EmbedColour: '#F8B3C1',
             Locale: 'en-US',
         }
     }

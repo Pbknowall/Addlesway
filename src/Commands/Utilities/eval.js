@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: 'Eval',
     description: 'Developer Command',
+    category: 'Utilities',
     aliases: ['ev'],
     cooldown: 0,
     run: async (Client, message, args, Guild, Locale) => {

@@ -5,7 +5,7 @@ class Message {
     async run(message) {
         if (message.author.bot || message.channel.type === 'dm') return;
         let Guild = await this.Client.Guild.Get(message.guild.id)
-        let Locale = require('./../Locales/' + (Guild.Settings.Locale || 'en-US') + '.js')
+        let Locale = require('./../Locales/' + (Guild.Settings.Locale || 'en-IE') + '.js')
         let prefix = message.content.match(new RegExp(`^<@!?${this.Client.user.id}> `)) ? message.content.match(new RegExp(`^<@!?${this.Client.user.id}> `))[0] : Guild.Settings.Prefix;
         if (!message.content.startsWith(prefix) || !prefix) return;
         let args = message.content.slice(prefix.length).trim().split(/ +/);
