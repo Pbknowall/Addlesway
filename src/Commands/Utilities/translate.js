@@ -5,6 +5,7 @@ const digraphs = ['sh', 'ch', 'th', 'wh', 'ph']
 module.exports = {
     name: 'Translate',
     description: 'Shows info',
+    category: 'Utilities',
     aliases: ['t', 'igpay', 'igpayatinlay', 'atinlay'],
     cooldown: 1,
     run: (Client, message, args, Guild, Locale) => {

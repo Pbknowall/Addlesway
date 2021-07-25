@@ -20,7 +20,7 @@ class CommandHandler {
                         files = files.filter(f => f.endsWith('.js'))
                         for (let file of files) {
                             let cmd = require(`../Commands/${cat}/${file}`)
-                            this.Client.Commands.set(cmd.name, cmd)
+                            this.Client.Commands.set(cmd.name.toLowerCase(), cmd)
                             if (cmd.aliases) {
                                 for (let alias of cmd.aliases) this.Client.Aliases.set(alias, cmd)
                             }

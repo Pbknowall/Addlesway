@@ -2,7 +2,7 @@ const GuildDef = require('./Defaults');
 
 class Guild {
     constructor(Mongoose) {
-        Object.defineProperty(this, 'Mongoose', { value: Mongoose })
+        this.Mongoose = Mongoose
         this.Model = Mongoose.model('Guild', {
             id: String,
             name: String,
@@ -11,7 +11,6 @@ class Guild {
             Settings: Object
         })
     }
-
     async Create(options) {
         if (typeof (options) !== 'object') throw new Error('Invalid Options Passed')
         let defaultOptions = Object.assign({ _id: this.Mongoose.Types.ObjectId() }, GuildDef.Default);
@@ -26,14 +25,14 @@ class Guild {
     }
 
     async Get(id) {
-        if (!id || typeof id !== 'string') throw new Error('Invalid ID Passed');
+        if (!id || typeof (id) !== 'string') throw new Error('Invalid ID Passed');
         let doc = await new Promise((resolve) => {
             this.Model.findOne({ id: id }, (err, object) => {
                 if (err) throw err
                 resolve(object)
             })
         })
-        return doc ? doc : false;
+        return doc
     }
 
     async Delete(id) {

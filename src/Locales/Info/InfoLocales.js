@@ -1,111 +1,105 @@
 module.exports = {
     "en_IE": {
-        name: "Info",
+        locale: "en_IE",
         description: "Gives you information about Addlesway.",
-        aliases: ["i", "stats"],
         usage: "{prefix}info",
-        category: "Info",
         data: {
+            String: [ "Days", "Hours", "Minutes" ],
             EmbedTitle: "Information",
             EmbedDescription: "Addlesway was created as a multifunctional Discord Bot to praise Pig Latin.",
             EmbedFields: [
                 "Creator",
+                "Latency",
                 "Server",
                 "Commands",
                 "Uptime",
                 "Version",
-                "Library",
-                "Latency"
+                "Library"
             ],
             EmbedFooter: "Addlesway 2021"
         }
     },
 
     "pt-PT": {
-        name: "Info",
+        locale: "pt-PT",
         description: "Dá informação sobre o Addlesway.",
-        aliases: ["i", "stats"],
         usage: "{prefix}info",
-        category: "Info",
         data: {
+            String: [ "Dias", "Horas", "Minutos" ],
             EmbedTitle: "Informação",
             EmbedDescription: "Addlesway foi criado como um bot multifuncional para elogiar Pig Latin.",
             EmbedFields: [
                 "Criador",
+                "Ping",
                 "Servidor",
                 "Comandos",
                 "Tempo de Atividade",
                 "Versão",
-                "Biblioteca",
-                "Ping",
-
+                "Biblioteca"
             ],
             EmbedFooter: "Addlesway 2021"
         }
     },
 
     "es-ES": {
-        name: "Info",
+        locale: "es-ES",
         description: "Dá información sobre Addlesway.",
-        aliases: ["i", "stats"],
         usage: "{prefix}info",
-        category: "Info",
         data: {
+            String: [ "Días", "Horas", "Minutos" ],
             EmbedTitle: "Información",
             EmbedDescription: "Addlesway fue creado como un bot multifuncional para elogiar Pig Latin.",
             EmbedFields: [
                 "Creador",
+                "Ping",
                 "Servidor",
                 "Comandos",
                 "Tiempo de Actividad",
                 "Versión",
-                "Biblioteca",
-                "Ping"
+                "Biblioteca"
             ],
             EmbedFooter: "Addlesway 2021"
         }
     },
 
     "fr_FR": {
-        name: "Info",
+        locale: "fr_FR",
         description: "Donne des informations sur Addlesway.",
-        aliases: ["i", "stats"],
         usage: "{prefix}info",
-        category: "Info",
         data: {
+            String: [ "Jours", "Heures", "Minutes" ],
             EmbedTitle: "Informations",
             EmbedDescription: "Addlesway a été créé comme un bot multifonctionnel pour apprécier Pig Latin.",
             EmbedFields: [
                 "Créateur",
+                "Ping",
                 "Serveur",
                 "Comandes",
                 "Durée de Fonctionnement",
                 "Version",
-                "Bibliothèque",
-                "Ping"
+                "Bibliothèque"
             ],
             EmbedFooter: "Addlesway 2021"
         }
     },
     "ia_IA": {
-        name: "Info",
+        locale: "ia_IA",
         description: "Ivesgay ouyay informationway aboutway Addlesway.",
-        aliases: ["i", "stats"],
         usage: "{prefix}info",
-        category: "Info",
         data: {
+            String: [ "Aysday", "Ourshay", "Minutos" ],
             EmbedTitle: "Informationway",
             EmbedDescription: "Addlesway asway reatedcay asway away ultifunctionalmay Iscordday Otbay otay raisepay Igpay Atinlay.",
             EmbedFields: [
                 "Reatorcay",
+                "Atencylay",
                 "Erversay",
                 "Ommandscay",
                 "Uptimeway",
                 "Ersionvay",
-                "Ibrarylay",
-                "Atencylay"
+                "Ibrarylay"
             ],
             EmbedFooter: "Addlesway 2021"
         }
-    },
+    }
 }
